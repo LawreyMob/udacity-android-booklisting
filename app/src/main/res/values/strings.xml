@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Book Listing</string>
+
+    <string name="searchButtonText">Search</string>
+
+    <string name="searchPlaceholder">Search by keywords</string>
+    <string name="searchIntent">SearchKeywords</string>
+
+</resources>
