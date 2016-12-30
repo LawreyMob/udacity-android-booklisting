@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +91,20 @@ public class BookListingActivity extends AppCompatActivity implements LoaderMana
         // Create a new loader for the given URL
         Log.v("Log Loader", "onCreateLoader");
 
-        String fullUrl = GOOGLEBOOKSEARCH_BASE_URL + "?q=" + searchKeywords;
+        String keywords = "";
+
+        try {
+
+            keywords = URLEncoder.encode(searchKeywords, "UTF-8");
+
+        }catch (UnsupportedEncodingException e) {
+
+            keywords = searchKeywords;
+
+        }
+
+
+        String fullUrl = GOOGLEBOOKSEARCH_BASE_URL + "?q=" + keywords;
         Log.v("URL", fullUrl);
         return new BookListingLoader(this, fullUrl);
     }

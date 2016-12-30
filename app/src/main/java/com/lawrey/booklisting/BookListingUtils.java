@@ -161,10 +161,20 @@ public class BookListingUtils {
 
                 JSONObject itemObject = items.getJSONObject(i);
                 JSONObject itemVolumeInfo = itemObject.getJSONObject("volumeInfo");
-                String title = itemVolumeInfo.getString("title");
 
-                String authors = itemVolumeInfo.getJSONArray("authors").toString();
-                String publisher = itemVolumeInfo.getString("publisher");
+                String title = "", authors = "", publisher = "";
+
+                if(itemVolumeInfo.has("title")){
+                    title = itemVolumeInfo.getString("title");
+                }
+
+                if(itemVolumeInfo.has("authors")) {
+                    authors = itemVolumeInfo.getJSONArray("authors").toString();
+                }
+
+                if(itemVolumeInfo.has("publisher")){
+                    title = itemVolumeInfo.getString("publisher");
+                }
 
                 books.add(new Book(title, authors, publisher));
             }
